@@ -1,8 +1,8 @@
 import axios from "axios";
-
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 // Update the baseURL to your Render backend URL
 const API = axios.create({
-  baseURL: 'https://mern-backend-pacr.onrender.com'  // Use your Render backend URL
+  baseURL: backendUrl  // Use your Render backend URL
 });
 
 // API calls
