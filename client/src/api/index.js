@@ -1,8 +1,19 @@
 import axios from "axios";
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
-// Update the baseURL to your Render backend URL
+
 const API = axios.create({
   baseURL: backendUrl  // Use your Render backend URL
+});
+
+// Add request interceptor to include the JWT token (author) in the headers
+API.interceptors.request.use((req) => {
+  const token = localStorage.getItem('author'); // Get the token from localStorage
+
+  if (token) {
+    req.headers.Authorization = `Bearer ${token}`; // Set the Authorization header with the token
+  }
+
+  return req;
 });
 
 // API calls
